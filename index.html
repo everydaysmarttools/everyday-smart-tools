@@ -32,4 +32,15 @@ function percentCalc(){let a=val('part'),b=val('whole');if(!Number.isFinite(a)||
 function splitCalc(){let t=val('total'),n=val('people');if(t<0||n<1||!Number.isFinite(t)||!Number.isFinite(n)){out('splitResult','Enter a total and at least 1 person.');return}out('splitResult',`Each person pays ${money(t/n)}.`)}
 function convertLength(){let x=val('length'),f=document.getElementById('from').value,t=document.getElementById('to').value;let meters=x*(f==='ft'?0.3048:f==='in'?0.0254:1);let result=meters/(t==='ft'?0.3048:t==='in'?0.0254:1);if(!Number.isFinite(result)){out('lengthResult','Enter a valid number.');return}out('lengthResult',`${result.toLocaleString('en-US',{maximumFractionDigits:6})} ${t==='ft'?'feet':t==='in'?'inches':'meters'}`)}
 function countWords(){let s=document.getElementById('words').value;let w=s.trim()?s.trim().split(/\s+/).length:0;out('wordResult',`${w} words · ${s.length} characters`)}document.getElementById('year').textContent=new Date().getFullYear();
-</script></body></html>
+</script>
+
+
+<footer style="text-align:center; padding:20px; margin-top:30px;">
+  <a href="about.html">About Us</a> |
+  <a href="privacy.html">Privacy Policy</a> |
+  <a href="contact.html">Contact Us</a>
+</footer>
+
+</body>
+</html>
+
