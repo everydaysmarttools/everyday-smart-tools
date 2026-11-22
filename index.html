@@ -1,47 +1,265 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Everyday Smart Tools — Free Online Calculators</title>
-<meta name="description" content="Simple, free everyday calculators: tip calculator, discount calculator, percentage calculator, split bill and unit converter.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Everyday Smart Tools - Free Online Calculators</title>
+<meta name="description" content="Free everyday calculators including tip, discount, percentage, bill splitting, length conversion, word counter and age calculator.">
 <style>
-:root{--ink:#182235;--muted:#637083;--blue:#3458db;--bg:#f5f7fb;--card:#fff;--line:#e5e9f2}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink)}header{background:linear-gradient(120deg,#162c62,#3458db);color:white;padding:28px 18px 34px}header .wrap,main,.foot{max-width:1000px;margin:auto}nav{display:flex;justify-content:space-between;align-items:center;gap:12px}nav a{color:white;text-decoration:none;font-weight:700}.hero{padding:30px 0 12px}.hero h1{font-size:clamp(28px,5vw,44px);margin:0 0 8px}.hero p{margin:0;opacity:.9}.pill{border:1px solid #ffffff60;border-radius:30px;padding:8px 12px;font-size:14px}main{padding:24px 18px}.adslot{border:1px dashed #b8c2d5;color:#758198;border-radius:12px;text-align:center;padding:18px;margin:12px 0 22px;font-size:13px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 4px 16px #17264a08}.card h2{font-size:19px;margin:0 0 12px}.card p{color:var(--muted);font-size:14px}.field{margin:10px 0}label{display:block;font-size:13px;font-weight:650;margin-bottom:5px}input,select{width:100%;padding:11px;border:1px solid #d4dbe8;border-radius:10px;font:inherit;background:white}button{background:var(--blue);color:white;border:0;border-radius:10px;padding:11px 14px;font-weight:700;cursor:pointer;width:100%;margin-top:8px}button:hover{filter:brightness(.93)}.result{font-weight:750;color:#2445bc;margin-top:12px;min-height:22px}.wide{margin-top:20px}.faq h2{margin-top:0}.foot{padding:22px 18px 36px;color:var(--muted);font-size:14px}.foot a{color:var(--blue)}.navlinks{display:flex;gap:14px;flex-wrap:wrap}.hide{display:none}@media(max-width:500px){nav{align-items:flex-start;flex-direction:column}.pill{font-size:12px}}
+*{box-sizing:border-box}
+body{margin:0;background:#f5f7fb;color:#182235;font-family:Arial,sans-serif}
+header{background:linear-gradient(120deg,#162c62,#3458db);color:white;padding:25px 18px}
+.wrap,main,.foot{max-width:1000px;margin:auto}
+nav{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold}
+.hero{padding:30px 5px 10px}
+.hero h1{font-size:clamp(28px,5vw,42px);margin:0 0 10px}
+.hero p{margin:0}
+main{padding:24px 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:white;border:1px solid #e5e9f2;border-radius:16px;padding:20px;box-shadow:0 4px 16px #17264a08}
+.card h2{font-size:20px;margin:0 0 12px;color:#182235}
+.card p{color:#637083}
+.field{margin:12px 0}
+label{display:block;font-size:14px;font-weight:bold;margin-bottom:5px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d4dbe8;border-radius:10px;font-size:16px;background:white}
+button{background:#3458db;color:white;border:0;border-radius:10px;padding:12px;font-size:16px;font-weight:bold;width:100%;margin-top:8px;cursor:pointer}
+button:hover{filter:brightness(.94)}
+.result{margin-top:12px;font-weight:bold;color:#2454bc;overflow-wrap:anywhere}
+.info{margin-top:20px}
+footer{text-align:center;padding:25px 15px;color:#637083}
+footer a{color:#3458db}
+.links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:12px 0}
+@media(max-width:500px){header{padding:20px 15px}.hero{padding-top:22px}.card{padding:17px}}
 </style>
 </head>
 <body>
-<header><div class="wrap"><nav><a href="#top">Everyday Smart Tools</a><span class="pill">Free · Simple · No sign-up</span></nav><section class="hero" id="top"><h1>Everyday calculations, made easy.</h1><p>Quick, practical calculators for everyday decisions. Free to use on any device.</p></section></div></header>
-<main>
-<div class="adslot">Advertisement space — add approved AdSense code here after approval</div>
-<div class="grid">
-<section class="card"><h2>Tip Calculator</h2><p>Calculate a tip and the total restaurant bill.</p><div class="field"><label>Bill amount ($)</label><input id="bill" type="number" min="0" step="0.01" placeholder="e.g. 48.50"></div><div class="field"><label>Tip percentage</label><input id="tip" type="number" min="0" step="1" value="18"></div><button onclick="tipCalc()">Calculate tip</button><div class="result" id="tipResult"></div></section>
-<section class="card"><h2>Discount Calculator</h2><p>Find the sale price and savings.</p><div class="field"><label>Original price ($)</label><input id="price" type="number" min="0" step="0.01" placeholder="e.g. 80"></div><div class="field"><label>Discount (%)</label><input id="discount" type="number" min="0" max="100" step="1" placeholder="e.g. 25"></div><button onclick="discountCalc()">Calculate discount</button><div class="result" id="discountResult"></div></section>
-<section class="card"><h2>Percentage Calculator</h2><p>Calculate what percentage one number is of another.</p><div class="field"><label>Part</label><input id="part" type="number" placeholder="e.g. 25"></div><div class="field"><label>Whole</label><input id="whole" type="number" placeholder="e.g. 200"></div><button onclick="percentCalc()">Calculate percentage</button><div class="result" id="percentResult"></div></section>
-<section class="card"><h2>Split the Bill</h2><p>Divide a total evenly among a group.</p><div class="field"><label>Total bill ($)</label><input id="total" type="number" min="0" step="0.01" placeholder="e.g. 120"></div><div class="field"><label>Number of people</label><input id="people" type="number" min="1" step="1" placeholder="e.g. 4"></div><button onclick="splitCalc()">Split bill</button><div class="result" id="splitResult"></div></section>
-<section class="card"><h2>Length Converter</h2><p>Convert feet, inches and meters.</p><div class="field"><label>Value</label><input id="length" type="number" placeholder="Enter a number"></div><div class="field"><label>Convert from</label><select id="from"><option value="ft">Feet</option><option value="in">Inches</option><option value="m">Meters</option></select></div><div class="field"><label>Convert to</label><select id="to"><option value="m">Meters</option><option value="ft">Feet</option><option value="in">Inches</option></select></div><button onclick="convertLength()">Convert</button><div class="result" id="lengthResult"></div></section>
-<section class="card"><h2>Word & Character Counter</h2><p>Count words and characters in your text.</p><div class="field"><label>Your text</label><textarea id="words" rows="5" style="width:100%;border:1px solid #d4dbe8;border-radius:10px;padding:11px;font:inherit" oninput="countWords()" placeholder="Paste or type text here..."></textarea></div><div class="result" id="wordResult">0 words · 0 characters</div></section>
+
+<header>
+<div class="wrap">
+<nav>
+<a href="#top">Everyday Smart Tools</a>
+<span>Free · Simple · No sign-up</span>
+</nav>
+<section class="hero" id="top">
+<h1>Everyday calculations, made easy.</h1>
+<p>Quick, practical calculators for everyday decisions. Free to use on any device.</p>
+</section>
 </div>
-<div class="adslot wide">Advertisement space — ad placement example</div>
-<section class="card faq wide"><h2>About Everyday Smart Tools</h2><p>Everyday Smart Tools is a free collection of simple calculators designed to make everyday math easier. Use the tools above for quick estimates. Always double-check important financial calculations before making decisions.</p><h2>Frequently asked questions</h2><p><b>Are these tools free?</b><br>Yes, these tools are free to use.</p><p><b>Do I need an account?</b><br>No account or sign-up is required.</p><p><b>Are my calculations saved?</b><br>No. These calculators work in your browser and do not save your entries to a server.</p></section>
-<section class="card wide" id="privacy"><h2>Privacy Policy (starter)</h2><p>These calculator tools run in your browser. This starter page does not send the values you enter to a server. If advertising, analytics, contact forms or other third-party services are added, this policy must be updated to explain their data practices. This is a starter statement, not legal advice.</p></section>
-</main><footer class="foot">© <span id="year"></span> Everyday Smart Tools · <a href="#privacy">Privacy</a> · <a href="#top">Back to top</a></footer>
-<script>
-const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n);const val=id=>Number(document.getElementById(id).value);const out=(id,s)=>document.getElementById(id).textContent=s;
-function tipCalc(){let b=val('bill'),p=val('tip');if(b<0||!Number.isFinite(b)||!Number.isFinite(p)){out('tipResult','Enter valid amounts.');return}out('tipResult',`Tip: ${money(b*p/100)} · Total: ${money(b+b*p/100)}`)}
-function discountCalc(){let p=val('price'),d=val('discount');if(p<0||d<0||d>100||!Number.isFinite(p)||!Number.isFinite(d)){out('discountResult','Enter a price and discount from 0–100%.');return}out('discountResult',`You save ${money(p*d/100)} · Sale price: ${money(p*(1-d/100))}`)}
-function percentCalc(){let a=val('part'),b=val('whole');if(!Number.isFinite(a)||!Number.isFinite(b)||b===0){out('percentResult','Enter numbers; whole must not be zero.');return}out('percentResult',`${(a/b*100).toFixed(2)}%`)}
-function splitCalc(){let t=val('total'),n=val('people');if(t<0||n<1||!Number.isFinite(t)||!Number.isFinite(n)){out('splitResult','Enter a total and at least 1 person.');return}out('splitResult',`Each person pays ${money(t/n)}.`)}
-function convertLength(){let x=val('length'),f=document.getElementById('from').value,t=document.getElementById('to').value;let meters=x*(f==='ft'?0.3048:f==='in'?0.0254:1);let result=meters/(t==='ft'?0.3048:t==='in'?0.0254:1);if(!Number.isFinite(result)){out('lengthResult','Enter a valid number.');return}out('lengthResult',`${result.toLocaleString('en-US',{maximumFractionDigits:6})} ${t==='ft'?'feet':t==='in'?'inches':'meters'}`)}
-function countWords(){let s=document.getElementById('words').value;let w=s.trim()?s.trim().split(/\s+/).length:0;out('wordResult',`${w} words · ${s.length} characters`)}document.getElementById('year').textContent=new Date().getFullYear();
-</script>
+</header>
 
+<main>
 
-<footer style="text-align:center; padding:20px; margin-top:30px;">
-  <a href="about.html">About Us</a> |
-  <a href="privacy.html">Privacy Policy</a> |
-  <a href="contact.html">Contact Us</a>|
-  <a href="age.html">Age Calculator</a>
+<div class="grid">
+
+<section class="card">
+<h2>Tip Calculator</h2>
+<p>Calculate a tip and total restaurant bill.</p>
+<div class="field">
+<label>Bill amount ($)</label>
+<input id="bill" type="number" min="0" step="0.01" placeholder="e.g. 48.50">
+</div>
+<div class="field">
+<label>Tip percentage (%)</label>
+<input id="tip" type="number" min="0" step="1" value="18">
+</div>
+<button onclick="tipCalc()">Calculate tip</button>
+<div class="result" id="tipResult"></div>
+</section>
+
+<section class="card">
+<h2>Discount Calculator</h2>
+<p>Find the sale price and savings.</p>
+<div class="field">
+<label>Original price ($)</label>
+<input id="price" type="number" min="0" step="0.01" placeholder="e.g. 80">
+</div>
+<div class="field">
+<label>Discount (%)</label>
+<input id="discount" type="number" min="0" max="100" step="1" placeholder="e.g. 25">
+</div>
+<button onclick="discountCalc()">Calculate discount</button>
+<div class="result" id="discountResult"></div>
+</section>
+
+<section class="card">
+<h2>Percentage Calculator</h2>
+<p>Calculate what percentage one number is of another.</p>
+<div class="field">
+<label>Part</label>
+<input id="part" type="number" placeholder="e.g. 25">
+</div>
+<div class="field">
+<label>Whole</label>
+<input id="whole" type="number" placeholder="e.g. 200">
+</div>
+<button onclick="percentCalc()">Calculate percentage</button>
+<div class="result" id="percentResult"></div>
+</section>
+
+<section class="card">
+<h2>Split the Bill</h2>
+<p>Divide a total evenly among a group.</p>
+<div class="field">
+<label>Total bill ($)</label>
+<input id="total" type="number" min="0" step="0.01" placeholder="e.g. 120">
+</div>
+<div class="field">
+<label>Number of people</label>
+<input id="people" type="number" min="1" step="1" placeholder="e.g. 4">
+</div>
+<button onclick="splitCalc()">Split bill</button>
+<div class="result" id="splitResult"></div>
+</section>
+
+<section class="card">
+<h2>Length Converter</h2>
+<p>Convert feet, inches and meters.</p>
+<div class="field">
+<label>Value</label>
+<input id="length" type="number" placeholder="Enter a number">
+</div>
+<div class="field">
+<label>Convert from</label>
+<select id="from">
+<option value="ft">Feet</option>
+<option value="in">Inches</option>
+<option value="m">Meters</option>
+</select>
+</div>
+<div class="field">
+<label>Convert to</label>
+<select id="to">
+<option value="m">Meters</option>
+<option value="ft">Feet</option>
+<option value="in">Inches</option>
+</select>
+</div>
+<button onclick="convertLength()">Convert</button>
+<div class="result" id="lengthResult"></div>
+</section>
+
+<section class="card">
+<h2>Word & Character Counter</h2>
+<p>Count words and characters in your text.</p>
+<div class="field">
+<label>Your text</label>
+<textarea id="words" rows="5" style="width:100%;border:1px solid #d4dbe8;border-radius:10px;padding:11px;font:inherit" oninput="countWords()" placeholder="Paste or type text here..."></textarea>
+</div>
+<div class="result" id="wordResult">0 words · 0 characters</div>
+</section>
+
+<section class="card">
+<h2>Age Calculator</h2>
+<p>Calculate your exact age in years, months and days.</p>
+<div class="field">
+<label>Date of Birth</label>
+<input type="date" id="dob">
+</div>
+<button onclick="calculateAge()">Calculate Age</button>
+<div class="result" id="ageResult"></div>
+</section>
+
+</div>
+
+<section class="card info">
+<h2>About Everyday Smart Tools</h2>
+<p>Everyday Smart Tools is a free collection of simple calculators designed to make everyday math easier. Use our tools for quick estimates, calculations and conversions. Always double-check important financial calculations before making decisions.</p>
+</section>
+
+<section class="card info">
+<h2>Frequently Asked Questions</h2>
+<p><b>Are these tools free to use?</b><br>Yes, these tools are free to use.</p>
+<p><b>Do I need an account?</b><br>No account or sign-up is required.</p>
+<p><b>Are my calculations saved?</b><br>No. These calculators work in your browser and do not send your entries to our server.</p>
+</section>
+
+<section class="card info">
+<h2>Privacy</h2>
+<p>These calculators run in your browser. The values you enter are not sent to our server by these calculator tools. If advertising, analytics or other third-party services are added, our privacy policy will explain their data practices.</p>
+<p><a href="privacy.html">Read our Privacy Policy</a></p>
+</section>
+
+</main>
+
+<footer class="foot">
+<div class="links">
+<a href="about.html">About Us</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="contact.html">Contact Us</a>
+</div>
+<p>© <span id="year"></span> Everyday Smart Tools</p>
 </footer>
+
+<script>
+const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n);
+const val=id=>Number(document.getElementById(id).value);
+const out=(id,s)=>document.getElementById(id).textContent=s;
+
+function tipCalc(){
+let b=val('bill'),p=val('tip');
+if(b<0||!Number.isFinite(b)||!Number.isFinite(p)||p<0){out('tipResult','Enter valid amounts.');return}
+out('tipResult',`Tip: ${money(b*p/100)} · Total: ${money(b+b*p/100)}`);
+}
+
+function discountCalc(){
+let p=val('price'),d=val('discount');
+if(p<0||d<0||d>100||!Number.isFinite(p)||!Number.isFinite(d)){out('discountResult','Enter a price and discount from 0–100%.');return}
+out('discountResult',`You save ${money(p*d/100)} · Sale price: ${money(p*(1-d/100))}`);
+}
+
+function percentCalc(){
+let a=val('part'),b=val('whole');
+if(!Number.isFinite(a)||!Number.isFinite(b)||b===0){out('percentResult','Enter numbers; whole must not be zero.');return}
+out('percentResult',`${(a/b*100).toFixed(2)}%`);
+}
+
+function splitCalc(){
+let t=val('total'),n=val('people');
+if(t<0||n<1||!Number.isFinite(t)||!Number.isFinite(n)||!Number.isInteger(n)){out('splitResult','Enter a total and at least 1 person.');return}
+out('splitResult',`Each person pays ${money(t/n)}.`);
+}
+
+function convertLength(){
+let x=val('length'),f=document.getElementById('from').value,t=document.getElementById('to').value;
+if(!Number.isFinite(x)){out('lengthResult','Enter a valid number.');return}
+let meters=x*(f==='ft'?0.3048:f==='in'?0.0254:1);
+let result=meters/(t==='ft'?0.3048:t==='in'?0.0254:1);
+out('lengthResult',`${result.toLocaleString('en-US',{maximumFractionDigits:6})} ${t==='ft'?'feet':t==='in'?'inches':'meters'}`);
+}
+
+function countWords(){
+let s=document.getElementById('words').value;
+let w=s.trim()?s.trim().split(/\s+/).length:0;
+out('wordResult',`${w} words · ${s.length} characters`);
+}
+
+function calculateAge(){
+let input=document.getElementById('dob').value;
+let result=document.getElementById('ageResult');
+if(!input){result.textContent='Please enter your date of birth.';return}
+let dob=new Date(input+'T00:00:00');
+let today=new Date();
+today.setHours(0,0,0,0);
+if(dob>today){result.textContent='Date of birth cannot be in the future.';return}
+let years=today.getFullYear()-dob.getFullYear();
+let months=today.getMonth()-dob.getMonth();
+let days=today.getDate()-dob.getDate();
+if(days<0){
+months--;
+let previousMonthDays=new Date(today.getFullYear(),today.getMonth(),0).getDate();
+days+=previousMonthDays;
+}
+if(months<0){
+years--;
+months+=12;
+}
+result.textContent=`Your age is ${years} years, ${months} months and ${days} days.`;
+}
+
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
 
 </body>
 </html>
-
