@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator | Everyday Smart Tools</title>
+  <meta name="description" content="Calculate your exact age in years, months and days with this free online age calculator.">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      line-height: 1.7;
+      color: #222;
+      background: #f7f9fc;
+    }
+    main {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px #17264a08;
+    }
+    h1, h2 { color: #1769aa; }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+    input {
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 15px;
+      background: #3458db;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #2454bc;
+      font-size: 18px;
+    }
+    a { color: #1769aa; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Age Calculator</h1>
+
+    <p>Enter your date of birth to calculate your exact age in years, months and days.</p>
+
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob">
+
+    <button onclick="calculateAge()">Calculate Age</button>
+
+    <div class="result" id="result"></div>
+
+    <h2>How to Use the Age Calculator</h2>
+    <p>Select your date of birth and click the Calculate Age button. The calculator will show your age in years, months and days.</p>
+
+    <p><a href="index.html">Back to Everyday Smart Tools</a></p>
+  </main>
+
+  <script>
+    function calculateAge() {
+      const input = document.getElementById('dob').value;
+      const result = document.getElementById('result');
+
+      if (!input) {
+        result.textContent = 'Please enter your date of birth.';
+        return;
+      }
+
+      const dob = new Date(input + 'T00:00:00');
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      if (dob > today) {
+        result.textContent = 'Date of birth cannot be in the future.';
+        return;
+      }
+
+      let years = today.getFullYear() - dob.getFullYear();
+      let months = today.getMonth() - dob.getMonth();
+      let days = today.getDate() - dob.getDate();
+
+      if (days < 0) {
+        months--;
+        const previousMonthDays = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          0
+        ).getDate();
+        days += previousMonthDays;
+      }
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      result.textContent =
+        'Your age is ' + years + ' years, ' +
+        months + ' months and ' + days + ' days.';
+    }
+  </script>
+</body>
+</html>
